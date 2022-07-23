@@ -16,7 +16,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1024M
+          memory: 256M
   
 
 
@@ -42,7 +42,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512M
+          memory: 256M
 
   datanode2:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
@@ -53,6 +53,10 @@ services:
       - hadoop_datanode2:/hadoop/dfs/data
     env_file:
       - ./hadoop.env
+    deploy:
+      resources:
+        limits:
+          memory: 256M
 
   resourcemanager:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
@@ -69,7 +73,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512M
+          memory: 256M
 
   nodemanager1:
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
@@ -85,7 +89,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512M
+          memory: 256M
 
   historyserver:
     image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
@@ -121,7 +125,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512M
+          memory: 256M
 
   spark-worker-1:
     image: bde2020/spark-worker:3.0.0-hadoop3.2
