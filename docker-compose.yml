@@ -111,10 +111,7 @@ services:
       - 4040:4040
     environment:
       - JUPYTER_TOKEN=admin
-    deploy:
-      resources:
-        limits:
-          memory: 1024M
+
 
 volumes:
   hadoop_namenode:
