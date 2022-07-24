@@ -1,4 +1,4 @@
-version: "3"
+version: "2.3"
 
 
 services:
@@ -94,6 +94,7 @@ services:
       - es-net
     ports:
       - 9200:9200
+    mem_limit: 4g
 
   kibana:
     container_name: kb-container
