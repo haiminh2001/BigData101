@@ -1,5 +1,6 @@
 version: "3"
 
+
 services:
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
@@ -12,12 +13,16 @@ services:
       - CLUSTER_NAME=test
     env_file:
       - ./hadoop.env
+
     
   crawler:
     image: haiminh2001/bigdata101:final
     container_name: crawler
     env_file:
       - ./hadoop.env
+    volumes:
+      - ./data/item:/crawler/tmpdata_item
+      - ./data/review:/crawler/tmpdata
 
   datanode1:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
@@ -111,7 +116,6 @@ services:
       - 4040:4040
     environment:
       - JUPYTER_TOKEN=admin
-
 
 volumes:
   hadoop_namenode:
