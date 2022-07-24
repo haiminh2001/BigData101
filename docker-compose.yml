@@ -13,7 +13,6 @@ services:
       - CLUSTER_NAME=test
     env_file:
       - ./hadoop.env
-
     
   crawler:
     image: haiminh2001/bigdata101:final
@@ -23,6 +22,8 @@ services:
     volumes:
       - ./data/item:/crawler/tmpdata_item
       - ./data/review:/crawler/tmpdata
+    extra_hosts:
+      - "dockerhost:172.18.0.1" #replace your ip here, run command: ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1
 
   datanode1:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
